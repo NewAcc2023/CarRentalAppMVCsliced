@@ -1,0 +1,40 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+nav a {
+    color: white !important;
+}
+
+.customContainer {
+    width: 70%;
+    margin: auto;
+}
+
+.flatpickr-day.disabled .flatpickr-day-content {
+    background-color: #ffcccc; /* Change to your desired background color */
+    color: #000000; /* Change to your desired text color */
+}
+
+.red-bg {
+    background-color: red;
+}
