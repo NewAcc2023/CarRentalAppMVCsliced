@@ -1,12 +1,12 @@
 ﻿using CarRentalAppMVC.Contexts;
-using CarRentalAppMVC.Entities;
+using CarRentalAppMVC.Pages.CarType;
 using LazyCache;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace CarRentalAppMVC.Queries.CarTypeQueries
 {
-	public class GetAllCarTypesQuery : IRequest<IEnumerable<CarBodyType>>
+    public class GetAllCarTypesQuery : IRequest<IEnumerable<CarBodyType>>
 	{
 
 	}

@@ -1,11 +1,11 @@
 ﻿using CarRentalAppMVC.Commands.BrandCommands;
 using CarRentalAppMVC.Contexts;
-using CarRentalAppMVC.Entities;
+using CarRentalAppMVC.Pages.Orders;
 using MediatR;
 
 namespace CarRentalAppMVC.Commands.RentOrderCommands
 {
-	public class AddRentOrderCommand : IRequest<RentOrder>
+    public class AddRentOrderCommand : IRequest<RentOrder>
 	{
 		public RentOrder RentOrder { get; set; }
 	}

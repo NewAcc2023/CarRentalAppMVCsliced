@@ -1,10 +1,12 @@
 ﻿using CarRentalAppMVC.Contexts;
-using CarRentalAppMVC.Entities;
+using CarRentalAppMVC.Pages.GearBoxes;
+using LazyCache;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace CarRentalAppMVC.Commands.GearBoxCommands
 {
-	public record AddGearBoxCommand : IRequest<GearBox>
+    public record AddGearBoxCommand : IRequest<GearBox>
 	{
 		public GearBox GearBox { get; set; }
 	}
@@ -12,8 +14,10 @@ namespace CarRentalAppMVC.Commands.GearBoxCommands
 	public class AddGearBoxHandler : IRequestHandler<AddGearBoxCommand, GearBox>
 	{
 		private readonly AppDbContext _context;
-		public AddGearBoxHandler(AppDbContext context)
+		private readonly IAppCache _cache;
+		public AddGearBoxHandler(AppDbContext context, IAppCache cache)
 		{
+			_cache = cache;
 			_context = context;
 		}
 
@@ -21,7 +25,16 @@ namespace CarRentalAppMVC.Commands.GearBoxCommands
 		{
 			await _context.GearBoxes.AddAsync(request.GearBox);
 			await _context.SaveChangesAsync();
+
+			_cache.Remove("GearBoxes");
+			Func<Task<IEnumerable<GearBox>>> objFactory = () => GetItems();
+			await _cache.GetOrAddAsync("GearBoxes", objFactory, TimeSpan.FromDays(1));
 			return request.GearBox;
+		}
+
+		private async Task<IEnumerable<GearBox>> GetItems()
+		{
+			return await _context.GearBoxes.ToListAsync();
 		}
 	}
 

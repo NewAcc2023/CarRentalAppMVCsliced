@@ -1,11 +1,11 @@
 ﻿using CarRentalAppMVC.Contexts;
-using CarRentalAppMVC.Entities;
+using CarRentalAppMVC.Pages.Cars;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace CarRentalAppMVC.Queries.CarQueries
 {
-	public record GetCarByIdQuery(int Id) : IRequest<Car>;
+    public record GetCarByIdQuery(int Id) : IRequest<Car>;
 
 	public class GetCarByIdQueryHandler : IRequestHandler<GetCarByIdQuery, Car>
 	{

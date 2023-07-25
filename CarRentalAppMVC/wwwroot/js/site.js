@@ -12,7 +12,7 @@ $(document).ready(function () {
 function updateCarList(searchValue) {
     if (searchValue.trim() !== '') {
         $.ajax({
-            url: '/Home/SearchCars',
+            url: '/Car/SearchCars',
             method: 'GET',
             data: { search: searchValue },
             success: function (response) {

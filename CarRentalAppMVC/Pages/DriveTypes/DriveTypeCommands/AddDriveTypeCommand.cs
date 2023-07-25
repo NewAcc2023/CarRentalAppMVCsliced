@@ -1,12 +1,13 @@
 ﻿using CarRentalAppMVC.Contexts;
-using CarRentalAppMVC.Entities;
+using LazyCache;
 using MediatR;
-using DriveType = CarRentalAppMVC.Entities.DriveType;
+using Microsoft.EntityFrameworkCore;
+using DriveType = CarRentalAppMVC.Pages.DriveTypes.DriveType;
 
 namespace CarRentalAppMVC.Commands.DriveTypeCommands
 {
 
-	public record AddDriveTypeCommand : IRequest<DriveType>
+    public record AddDriveTypeCommand : IRequest<DriveType>
 	{
 		public DriveType DriveType { get; set; }
 	}
@@ -14,8 +15,10 @@ namespace CarRentalAppMVC.Commands.DriveTypeCommands
 	public class AddDriveTypeHandler : IRequestHandler<AddDriveTypeCommand, DriveType>
 	{
 		private readonly AppDbContext _context;
-		public AddDriveTypeHandler(AppDbContext context)
+		private readonly IAppCache _cache;
+		public AddDriveTypeHandler(AppDbContext context, IAppCache cache)
 		{
+			_cache = cache;
 			_context = context;
 		}
 
@@ -23,7 +26,17 @@ namespace CarRentalAppMVC.Commands.DriveTypeCommands
 		{
 			await _context.DriveTypes.AddAsync(request.DriveType);
 			await _context.SaveChangesAsync();
+
+			_cache.Remove("DriveTypes");
+			Func<Task<IEnumerable<DriveType>>> objFactory = () => GetItems();
+			await _cache.GetOrAddAsync("DriveTypes", objFactory, TimeSpan.FromDays(1));
+
 			return request.DriveType;
+		}
+
+		private async Task<IEnumerable<DriveType>> GetItems()
+		{
+			return await _context.DriveTypes.ToListAsync();
 		}
 	}
 }

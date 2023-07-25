@@ -1,12 +1,12 @@
 ﻿using CarRentalAppMVC.Contexts;
-using CarRentalAppMVC.Entities;
+using CarRentalAppMVC.Pages.Brands;
 using LazyCache;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace CarRentalAppMVC.Queries.BrandQueries
 {
-	public record GetAllBrandsQuery() : IRequest<IEnumerable<Brand>>;
+    public record GetAllBrandsQuery() : IRequest<IEnumerable<Brand>>;
 
 	public class GetAllBrandsHandler : IRequestHandler<GetAllBrandsQuery, IEnumerable<Brand>>
 	{

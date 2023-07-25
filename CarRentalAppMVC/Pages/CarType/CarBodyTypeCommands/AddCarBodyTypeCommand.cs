@@ -1,12 +1,12 @@
 ﻿using CarRentalAppMVC.Contexts;
-using CarRentalAppMVC.Entities;
+using CarRentalAppMVC.Pages.CarType;
 using LazyCache;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace CarRentalAppMVC.Commands.CarBodyTypeCommands
 {
-	public record AddCarBodyTypeCommand : IRequest<CarBodyType>
+    public record AddCarBodyTypeCommand : IRequest<CarBodyType>
 	{
 		public CarBodyType CarBodyType { get; set; }
 	}

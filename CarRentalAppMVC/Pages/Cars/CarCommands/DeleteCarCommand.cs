@@ -1,12 +1,12 @@
 ﻿using CarRentalAppMVC.Contexts;
-using CarRentalAppMVC.Entities;
+using CarRentalAppMVC.Pages.Cars;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System.Text.RegularExpressions;
 
 namespace CarRentalAppMVC.Commands.CarCommands
 {
-	public record DeleteCarCommand : IRequest<Car>
+    public record DeleteCarCommand : IRequest<Car>
 	{
 		public int CarId { get; set; }
 	}

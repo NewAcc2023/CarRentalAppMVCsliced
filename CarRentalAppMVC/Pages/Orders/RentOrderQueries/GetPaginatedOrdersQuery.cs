@@ -1,6 +1,5 @@
 ﻿using CarRentalAppMVC.Contexts;
-using CarRentalAppMVC.Entities;
-using CarRentalAppMVC.Models;
+using CarRentalAppMVC.Pages.Orders.ViewModels;
 using MediatR;
 
 namespace CarRentalAppMVC.Pages.Orders.RentOrderQueries

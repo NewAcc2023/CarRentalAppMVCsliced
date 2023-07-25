@@ -1,11 +1,11 @@
 ﻿using CarRentalAppMVC.Contexts;
-using CarRentalAppMVC.Entities;
+using CarRentalAppMVC.Pages.Orders;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace CarRentalAppMVC.Commands.RentOrderCommands
 {
-	public record SetActiveRentOrderCommand : IRequest<RentOrder>
+    public record SetActiveRentOrderCommand : IRequest<RentOrder>
 	{
 		public int Id { get; set; }
 	}

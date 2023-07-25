@@ -1,5 +1,4 @@
 ﻿using CarRentalAppMVC.Contexts;
-using CarRentalAppMVC.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 

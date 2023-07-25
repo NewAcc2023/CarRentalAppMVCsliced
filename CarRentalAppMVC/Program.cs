@@ -21,14 +21,14 @@ builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.Get
 builder.Services.Configure<RazorViewEngineOptions>(o =>
 {
 	o.ViewLocationFormats.Clear();
-	o.ViewLocationFormats.Add("/Pages/Cars/{0}" + RazorViewEngine.ViewExtension);
-	o.ViewLocationFormats.Add("/Pages/Brands/{0}" + RazorViewEngine.ViewExtension);
-	o.ViewLocationFormats.Add("/Pages/CarType/{0}" + RazorViewEngine.ViewExtension);
-	o.ViewLocationFormats.Add("/Pages/DriveTypes/{0}" + RazorViewEngine.ViewExtension);
-	o.ViewLocationFormats.Add("/Pages/EngineTypes/{0}" + RazorViewEngine.ViewExtension);
-	o.ViewLocationFormats.Add("/Pages/GearBoxes/{0}" + RazorViewEngine.ViewExtension);
-	o.ViewLocationFormats.Add("/Pages/Orders/{0}" + RazorViewEngine.ViewExtension);
-	o.ViewLocationFormats.Add("/Pages/Users/{0}" + RazorViewEngine.ViewExtension);
+	o.ViewLocationFormats.Add("/Pages/Cars/Views/{0}" + RazorViewEngine.ViewExtension);
+	o.ViewLocationFormats.Add("/Pages/Brands/Views/{0}" + RazorViewEngine.ViewExtension);
+	o.ViewLocationFormats.Add("/Pages/CarType/Views/{0}" + RazorViewEngine.ViewExtension);
+	o.ViewLocationFormats.Add("/Pages/DriveTypes/Views/{0}" + RazorViewEngine.ViewExtension);
+	o.ViewLocationFormats.Add("/Pages/EngineTypes/Views/{0}" + RazorViewEngine.ViewExtension);
+	o.ViewLocationFormats.Add("/Pages/GearBoxes/Views/{0}" + RazorViewEngine.ViewExtension);
+	o.ViewLocationFormats.Add("/Pages/Orders/Views/{0}" + RazorViewEngine.ViewExtension);
+	o.ViewLocationFormats.Add("/Pages/Users/Views/{0}" + RazorViewEngine.ViewExtension);
 	o.ViewLocationFormats.Add("/Pages/Shared/{0}" + RazorViewEngine.ViewExtension);
 });
 
@@ -54,6 +54,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Car}/{action=Index}/{id?}");
 
 app.Run();

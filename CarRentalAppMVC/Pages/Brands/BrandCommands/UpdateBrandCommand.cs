@@ -1,12 +1,12 @@
 ﻿using CarRentalAppMVC.Contexts;
-using CarRentalAppMVC.Entities;
+using CarRentalAppMVC.Pages.Brands;
 using LazyCache;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace CarRentalAppMVC.Commands.BrandCommands
 {
-	public record UpdateBrandCommand : IRequest<Brand>
+    public record UpdateBrandCommand : IRequest<Brand>
 	{
 		public int Id { get; set; }
 

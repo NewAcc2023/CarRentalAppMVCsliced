@@ -1,13 +1,13 @@
 ﻿
 using CarRentalAppMVC.Contexts;
-using CarRentalAppMVC.Entities;
+using CarRentalAppMVC.Pages.Brands;
 using LazyCache;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace CarRentalAppMVC.Commands.BrandCommands
 {
-	public record AddBrandCommand(Brand Brand) : IRequest<Brand>;
+    public record AddBrandCommand(Brand Brand) : IRequest<Brand>;
 
 	public class AddBrandHandler : IRequestHandler<AddBrandCommand, Brand>
 	{
